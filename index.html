@@ -1,130 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>ENGGAL JAYA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-@import url(https://fonts.googleapis.com/css?family=Lato);
-body {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #222;
-  overflow: hidden;
-  margin:0;
-  flex-direction: column;
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENGGAL JAYA</title>
+<style>
+/* ===== TIRAI + PRISMA + EMBOS - LUAR ===== */
+html:before, html:after {
+  content:''; position:fixed; top:0; bottom:0; width:50%;
+  background:linear-gradient(-90deg,#333 -10%,#d56 100%);
+  transition:0.6s 0.1s linear; z-index:9999; box-shadow:0 0 5px;
 }
-.title {
-  position: relative;
-  z-index: 10;
-  color: white;
-  font-family: Lato, sans-serif;
-  letter-spacing: 5px;
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px rgba(0,255,255,0.8);
+html:after { right:0; background:linear-gradient(90deg,#333 -10%,#ddd 100%); }
+html:before { left:0; }
+html:hover:before, html:hover:after{ width:0; box-shadow:0 0 15px; }
+
+/* TULISAN EMBOS DI ATAS PRISMA */
+body:before{
+  content:'ENGGAL JAYA'; position:fixed; width:100%; text-align:center;
+  z-index:10001; left:0; top:42%; margin-top:-18px; font-size:15px;
+  letter-spacing:4px; font-weight:900; font-family::'Bebas Neue', sans-serif;
+  font-variant:small-caps; color:#d56;
+  text-shadow: 0.5px 0.5px 1px black, -1px -1px 1px rgba(0,0,0,0.7);
+  transition:0.3s linear;
 }
-.btn {
-  position: relative;
-  z-index: 10;
-  padding: 1rem 3rem;
-  font-family: Lato, sans-serif;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  color: white;
-  text-decoration: none;
-  background: linear-gradient(90deg, #00dbde, #fc00ff, #00dbde);
-  background-size: 300%;
-  border-radius: 2em;
-  cursor: pointer;
-  user-select: none;
-  display: inline-block;
-  animation: glow 8s linear infinite;
+/* PRISMA KOTAK MIRING */
+body:after{
+  content:''; position:fixed; height:110px; width:110px;
+  background:linear-gradient(135deg,#eee,#888);
+  z-index:10000; right:65%; top:50%; margin:-110px;
+  transform:rotate(45deg); box-shadow:1px -1px 5px rgba(0,0,0,.5), inset 1px 1px 2px white;
+  transition:0.6s linear;
 }
-.btn::before {
-  position: absolute;
-  content: "";
-  top: -5px; left: -5px; bottom: -5px; right: -5px;
-  z-index: -1;
-  background: inherit;
-  background-size: inherit;
-  border-radius: 4em;
-  opacity: 0;
-  transition: 0.5s;
-}
-.btn:hover::before {
-  opacity: 1;
-  filter: blur(20px);
-  animation: glow 8s linear infinite;
-}
-@keyframes glow { to { background-position: 300%; } }
-canvas{
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height:100%;
-  z-index: 1;
-  pointer-events: none;
-}
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-  background: rgba(0,0,0,0.6);
-  color: #aaa;
-  padding: 8px;
-  font-family: Lato, sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-/* WA MENGAMBANG */
-.wa-wrapper{position:fixed;bottom:35px;right:15px;display:flex;align-items:center;gap:8px;z-index:9999;font-family:sans-serif}
-.wa-bubble{background:#25D366;color:#fff;padding:8px 16px;border-radius:20px;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.wa-btn{width:55px;height:55px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.3)}
-.wa-btn img{width:32px;height:32px}
-  </style>
+html:hover body:before{ left:-10%; width:0; opacity:0; }
+html:hover body:after{ right:100%; margin:-110px 100px 0 -110px; opacity:0; }
+
+/* ===== DALAM - DESAIN MERAH MU ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+html{min-height:100%; background:#f2f2f2;}
+.main{ background:#f2f2f2; padding-bottom:80px; }
+.header{background:#8b0000;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center; position:sticky; top:0; z-index:5;}
+.logo{font-weight:900}
+.menu{display:flex;gap:12px;font-size:12px}
+.menu a{color:#fff;text-decoration:none;opacity:.8}
+.menu a.active{border-bottom:2px solid #ff0;opacity:1;font-weight:bold}
+.hero{height:380px;background:#333 url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800') center/cover;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(80,0,0,.6)}
+.hero-inner{position:relative;z-index:2}
+.hero-inner h1 span{color:#ff0}
+.btn{display:inline-block;margin-top:12px;background:#ff0;color:#400;padding:10px 20px;font-weight:900;text-decoration:none;font-size:12px}
+.about{background:#fff;padding:28px 18px}
+.about h2{color:#8b0000;text-align:center;margin-bottom:12px}
+.about p{font-size:17px;line-height:1.8;color:#222}
+.red{color:#b00000;font-weight:900}
+.list{margin:14px 0 14px 18px}
+.list li{margin-bottom:12px;font-size:17px;line-height:1.7}
+.footer{background:#2b0000;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;font-size:11px}
+.footer a{color:#fff;text-decoration:none}
+.wa{position:fixed;bottom:18px;right:12px;z-index:999;display:flex;align-items:center;gap:8px}
+.wa-bubble{background:#fff;padding:7px 12px;border-radius:18px;font-size:12px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.wa-btn{background:#25D366;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+</style>
 </head>
 <body>
-  <canvas></canvas>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
- <script>
-  p = [[389,246,0],[410,255,20],[413,268,7],[431,261,12],[418,244,30],[416,217,25],[420,205,8],[427,227,-20],[432,236,5],[444,228,12],[451,232,41],[446,246,72],[443,264,96],[446,278,65],[463,267,20],[460,258,-10],[464,243,-20],[459,233,0],[475,225,22],[484,225,29],[490,214,51],[476,202,55],[462,202,55],[446,205,42],[440,192,42],[430,183,72],[413,184,58],[406,191,32],[406,207,0],[402,220,0],[390,222,20],[385,228,10],[389,246,0]];
-  </script>
-  <script>
-  var w = window.innerWidth, h = window.innerHeight;
-  window.onresize = function(){ var w = window.innerWidth, h = window.innerHeight; camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w,h); }
-  cameraSpeed =.00015; lightSpeed =.001; tubularSegments = 1000; radialSegments = 3; tubeRadius = 2; ambientLight = 0x222222; lightColor = 0xffffff; lightIntensity = 1; lightDistance = 20; hs = 0; he = 360;
-  var renderer = new THREE.WebGLRenderer({ canvas: document.querySelector("canvas"), antialias: true, }); renderer.setSize(w, h);
-  var scene = new THREE.Scene(); var camera = new THREE.PerspectiveCamera(60, w / h,.001, 1000);
-  var starsGeometry = new THREE.Geometry(); for(i=0; i<3000; i++){ var star = new THREE.Vector3(); star.x = THREE.Math.randFloatSpread(1500); star.y = THREE.Math.randFloatSpread(1500); star.z = THREE.Math.randFloatSpread(1500); starsGeometry.vertices.push(star); }
-  var starsMaterial = new THREE.PointsMaterial({color: 0xffffff}); var starField = new THREE.Points(starsGeometry,starsMaterial); scene.add(starField);
-  for (i=0; i<p.length; i++) { var x = p[i][0]; var y = p[i][2]; var z = p[i][1]; p[i] = new THREE.Vector3(x,y,z); }
-  var path = new THREE.CatmullRomCurve3(p); var geometry = new THREE.TubeGeometry(path,tubularSegments,tubeRadius,radialSegments,true);
-  hue = hs; hup = true; for(i=0; i<geometry.faces.length; i++){ hup==1?hue++:hue--; hue==he?hup=false:(hue==hs)?hup=true:0; geometry.faces[i].color = new THREE.Color("hsl("+hue+",100%,50%)"); }
-  var material = new THREE.MeshLambertMaterial({ side: THREE.BackSide, vertexColors: THREE.FaceColors, wireframe: true });
-  var tube = new THREE.Mesh(geometry, material); scene.add(tube);
-  var light = new THREE.PointLight(0xffffff, 1, 50); scene.add(light); var light2 = new THREE.AmbientLight(ambientLight); scene.add(light2);
-  var l1 = new THREE.PointLight(lightColor, lightIntensity, lightDistance); scene.add(l1); var l2 = new THREE.PointLight(lightColor, lightIntensity, lightDistance); scene.add(l2); var l3 = new THREE.PointLight(lightColor, lightIntensity, lightDistance); scene.add(l3); var l4 = new THREE.PointLight(lightColor, lightIntensity, lightDistance); scene.add(l4); var l5 = new THREE.PointLight(lightColor, lightIntensity, lightDistance); scene.add(l5);
-  var pct = 0; var pct2 = 0;
-  function render(){ pct += cameraSpeed; pct2 += lightSpeed; var pt1 = path.getPointAt(pct%1); var pt2 = path.getPointAt((pct +.01)%1); camera.position.set(pt1.x,pt1.y,pt1.z); camera.lookAt(pt2); light.position.set(pt2.x, pt2.y, pt2.z); l1.position.set(path.getPointAt((pct2+.0)%1).x, path.getPointAt((pct2+.0)%1).y, path.getPointAt((pct2+.0)%1).z); l2.position.set(path.getPointAt((pct2+.2)%1).x, path.getPointAt((pct2+.2)%1).y, path.getPointAt((pct2+.2)%1).z); l3.position.set(path.getPointAt((pct2+.4)%1).x, path.getPointAt((pct2+.4)%1).y, path.getPointAt((pct2+.4)%1).z); l4.position.set(path.getPointAt((pct2+.6)%1).x, path.getPointAt((pct2+.6)%1).y, path.getPointAt((pct2+.6)%1).z); l5.position.set(path.getPointAt((pct2+.8)%1).x, path.getPointAt((pct2+.8)%1).y, path.getPointAt((pct2+.8)%1).z); renderer.render(scene, camera); requestAnimationFrame(render); }
-  requestAnimationFrame(render);
-  </script>
+<div class="main">
+<div class="header">
+<div class="logo">ENGGAL JAYA</div>
+<div class="menu"><a href="#" class="active">HOME</a><a href="#about">ABOUT</a><a href="#showcase">SHOWCASE</a></div>
+</div>
 
-  <div class="title">ENGGAL JAYA</div>
-  <a href="https://embuhhh.github.io/engine/home.html" class="btn">ENTER</a>
+<div class="hero"><div class="hero-inner"><h1>KOLTER & <span>GRINDING</span><br>SLEEVE CRANKSHAFT</h1><a class="btn" href="#showcase">VIEW SHOWCASE</a></div></div>
 
-  <div class="footer">design by Embuh</div>
+<div class="about" id="about">
+<h2>WELCOME TO ENGGAL JAYA</h2>
+<p><b>ENGGAL JAYA</b> adalah bengkel spesialis <span class="red">kolter, grinding, sleeve crankshaft, dan cylinder head</span> di Sidoarjo - Surabaya.</p>
+<ul class="list">
+<li><span class="red">1. KOLTER BLOK MESIN</span><br>Mengembalikan silinder aus / baret dengan presisi tinggi.</li>
+<li><span class="red">2. GRINDING CRANKSHAFT</span><br>Grinding kruk as oleng sesuai oversize, hasil halus & balance.</li>
+<li><span class="red">3. SLEEVE BLOK & CRANKSHAFT</span><br>Solusi hemat blok tidak bisa di kolter lagi, bahan kuat tahan panas.</li>
+<li><span class="red">4. SERVICE CYLINDER HEAD</span><br>Sekur klep, ganti sitting, bos klep, milling permukaan melengkung.</li>
+</ul>
+<p><span class="red">Kenapa ENGGAL JAYA?</span> Presisi terjamin, harga bengkel, cepat 1-2 hari, konsultasi gratis.<br><br><b>Komitmen: <span class="red">Kualitas Terjamin, Kepuasan Client.</span></b></p>
+</div>
 
-  <!-- WA -->
-  <div class="wa-wrapper">
-    <div class="wa-bubble">Butuh bantuan?</div>
-    <a href="https://wa.me/6283856058316?text=Halo%20ENGGAL%20JAYA" target="_blank" class="wa-btn">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
-    </a>
-  </div>
+<div style="background:#fff;padding:16px;border-radius:12px;margin:15px 10px">
+<p style="font-size:14px;line-height:1.7;color:#000;font-weight:bold;margin:0">
+📍 ALAMAT KAMI :<br>
+Jl. Mbah Oteh, Wadung - Wadungasih,<br>
+Buduran - Sidoarjo 61252<br>
+<span style="font-size:12px;color:#666">HPJJ+8X5</span><br><br>
+📞 08152-5777-8263
+</p>
+<iframe src="https://www.google.com/maps?q=HPJJ%2B8X5%20Wadung%20Wadungasih%20Buduran%20Sidoarjo&z=17&output=embed" style="width:100%;height:280px;border:0;border-radius:10px;margin-top:12px" loading="lazy"></iframe>
+<a href="https://www.google.com/maps/search/?api=1&query=HPJJ%2B8X5%20Wadung%20Buduran%20Sidoarjo" target="_blank" style="display:block;text-align:center;background:#111;color:#fff;padding:12px;border-radius:8px;margin-top:10px;text-decoration:none;font-weight:bold">TEMUKAN KAMI DI SINI - MAPS</a>
+</div>
 
+<div class="footer"><a href="#">← Back</a><span>design by Embuh</span><a href="#">Top ↑</a></div>
+<div class="wa"><div class="wa-bubble">Butuh bantuan?</div><a class="wa-btn" href="https://wa.me/6283856058316?text=Halo%20ENGGAL%20JAYA" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:28px"></a></div>
+</div>
 </body>
 </html>
